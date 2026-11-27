@@ -32,16 +32,16 @@ button:active,.btn:active{transform:scale(.96)}button:focus-visible,.btn:focus-v
 .tgl{display:flex;gap:8px;margin:8px 0}.tgl button{flex:1}.tgl button.on{background:var(--yel);font-weight:700}
 .leg{margin:2px 0 2px 18px;padding:4px 0 4px 14px;border-left:3px dotted var(--navy);font-size:14px;color:#51627c}
 .st{border:1.5px solid var(--navy);border-radius:16px;margin:8px 0;overflow:hidden;cursor:pointer;animation:pop .45s cubic-bezier(.3,1.5,.5,1) both;transition:box-shadow .3s}
-.ph{position:relative;height:110px;overflow:hidden;border-bottom:1.5px solid var(--navy);transition:height .5s cubic-bezier(.3,1.25,.5,1)}
-.ph svg,.ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.ph{position:relative;background:#fff;height:110px;overflow:hidden;border-bottom:1.5px solid var(--navy);transition:height .5s cubic-bezier(.3,1.25,.5,1)}
+.ph svg,.ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .5s ease}
 .ov{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.ov .tag{margin:0}
 .ov .tm{background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
 .bd{padding:8px 12px 12px}.hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .more{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .3s}.more p{margin:6px 0 10px}
-.st.open .ph{height:190px}.st.open .ph svg,.st.open .ph img{transform:scale(1.08)}.st.open .more{max-height:460px;opacity:1}
+.st.open .ph{height:190px}.st.open .ph svg,.st.open .ph img{transform:scale(1.15);opacity:.5}.st.open .more{max-height:460px;opacity:1}
 .mp iframe{display:block;width:100%;height:190px;border:1.5px solid var(--navy);border-radius:12px;margin-top:10px}.cr{position:absolute;right:8px;bottom:8px;font-size:11px;line-height:1.4;background:#fff;border:1px solid var(--navy);border-radius:999px;padding:1px 8px}
 .st:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
-@media(hover:hover){.st:hover{box-shadow:0 6px 0 -1px rgba(35,64,107,.2)}.st:hover .ph{height:190px}.st:hover .ph svg,.st:hover .ph img{transform:scale(1.08)}.st:hover .more{max-height:460px;opacity:1}}
+@media(hover:hover){.st:hover{box-shadow:0 6px 0 -1px rgba(35,64,107,.2)}.st:hover .ph{height:190px}.st:hover .ph svg,.st:hover .ph img{transform:scale(1.15);opacity:.5}.st:hover .more{max-height:460px;opacity:1}}
 .st.sight{background:#DCEEF6}.st.food{background:#FCEBC5}.st.shop{background:#F8DCE3}.st.other{background:#F1F3F2}
 .st.done{opacity:.55}.st.done h3{text-decoration:line-through}.st.skip h3{text-decoration:line-through;color:#7a879b}.st.skip{opacity:.5}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -242,19 +242,18 @@ function art(s){
 $('tl').addEventListener('click',e=>{const c=e.target.closest('.st');if(!c||e.target.closest('a,label,input'))return;c.setAttribute('aria-expanded',c.classList.toggle('open'))});
 $('tl').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.classList.contains('st'))e.target.click()});
 /* 景點照片：開啟時從日文維基百科取代表圖（開放授權），取不到就保留插畫。WK 為「名稱關鍵字 → 維基條目」，可自行增修 */
-const WK=[[/大阪城/,'大阪城'],[/藍天大廈/,'梅田スカイビル'],[/道頓堀/,'道頓堀'],[/View Land/,'天橋立'],[/智恩寺/,'智恩寺'],[/舟屋/,'伊根の舟屋'],[/遊覽船/,'伊根町'],[/御所之湯|溫泉街/,'城崎温泉'],[/歷史博物館/,'大阪歴史博物館'],[/天神橋筋/,'天神橋筋商店街'],[/中之島/,'中之島公園'],[/機場|起飛/,'関西国際空港']];
+const WK=[[/大阪城/,'大阪城'],[/藍天大廈/,'梅田スカイビル'],[/道頓堀/,'道頓堀'],[/View Land/,'天橋立ビューランド|天橋立'],[/智恩寺/,'智恩寺_(宮津市)|智恩寺'],[/舟屋/,'伊根の舟屋|伊根町'],[/遊覽船/,'伊根町'],[/御所之湯/,'御所の湯|城崎温泉'],[/溫泉街/,'城崎温泉'],[/歷史博物館/,'大阪歴史博物館'],[/天神橋筋/,'天神橋筋商店街'],[/中之島/,'中之島公園|中之島'],[/うめきた/,'うめきた|梅田_(大阪市)'],[/機場|起飛/,'関西国際空港'],[/鰻/,'ひつまぶし|ウナギ'],[/Kiji|大阪燒/,'お好み焼き'],[/居酒屋/,'居酒屋'],[/會席/,'カニ料理|ズワイガニ'],[/海宮/,'握り寿司|寿司'],[/美加茂/,'定食'],[/象印/,'炊飯器'],[/MUJI/,'無印良品'],[/大丸梅田/,'大丸梅田店|大丸'],[/GOKAN/,'フィナンシェ'],[/Shake Shack/,'シェイク・シャック'],[/Columbia|HOTEL FORZA/,'北浜_(大阪市)'],[/GLITCH|COFFEE|BROOKLYN|Aura/i,'コーヒー'],[/はしだて/,'京都丹後鉄道|丹後あかまつ号'],[/こうのとり/,'こうのとり_(列車)|特急こうのとり'],[/丹海巴士/,'丹後海陸交通'],[/阪急三番街/,'阪急三番街'],[/JR 豐岡/,'豊岡駅'],[/JR 大阪|京阪|VIA INN/,'大阪駅'],[/Fairfield|宮津/,'宮津市'],[/城崎/,'城崎温泉']];
 const wk=s=>{if(s[7])return'';const r=WK.find(a=>a[0].test(s[2]));return r?r[1]:''};
-const wc=ld('wkc',{});
+const wc=ld('wkc2',{});
+async function pic1(t){for(const n of t.split('|')){try{const r=await fetch('https://ja.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(n));if(!r.ok)continue;const j=await r.json();const u=j.thumbnail&&j.thumbnail.source;if(u)return u}catch(e){}}return''}
 async function photos(){
  for(const ph of document.querySelectorAll('#tl .ph[data-wk]')){
   const t=ph.dataset.wk;if(!t)continue;
-  try{
-   if(!(t in wc)){const r=await fetch('https://ja.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t));const j=await r.json();wc[t]=(j.thumbnail&&j.thumbnail.source)||'';sv('wkc',wc)}
-   if(!wc[t])continue;
-   const im=new Image();im.alt=t+' 照片';im.referrerPolicy='no-referrer';
-   im.onload=()=>{const sv_=ph.querySelector('svg');if(sv_){sv_.replaceWith(im);const c=document.createElement('span');c.className='cr';c.textContent='照片：Wikipedia';ph.appendChild(c)}};
-   im.src=wc[t];
-  }catch(e){}
+  if(!(t in wc)){wc[t]=await pic1(t);sv('wkc2',wc)}
+  if(!wc[t])continue;
+  const im=new Image();im.alt='示意照片';im.referrerPolicy='no-referrer';
+  im.onload=()=>{const o=ph.querySelector('svg');if(o){o.replaceWith(im);const c=document.createElement('span');c.className='cr';c.textContent='示意照片：Wikipedia';ph.appendChild(c)}};
+  im.src=wc[t];
  }}
 function loadMap(c){const m=c.querySelector('.mp');if(m&&!m.firstChild){const f=document.createElement('iframe');f.loading='lazy';f.title='地圖';f.referrerPolicy='no-referrer-when-downgrade';f.src='https://www.google.com/maps?q='+m.dataset.q+'&output=embed&hl=zh-TW';m.appendChild(f)}}
 $('tl').addEventListener('pointerover',e=>{const c=e.target.closest('.st');if(c)loadMap(c)});

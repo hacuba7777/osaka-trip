@@ -253,7 +253,7 @@ async function photos(){
   if(!wc[t])continue;
   const im=new Image();im.alt='示意照片';im.referrerPolicy='no-referrer';
   im.onload=()=>{const o=ph.querySelector('svg');if(o){o.replaceWith(im);const c=document.createElement('span');c.className='cr';c.textContent='示意照片：Wikipedia';ph.appendChild(c)}};
-  im.src=wc[t];
+  const hi=wc[t].replace(/\/\d+px-/,'/960px-');let tried=0;im.onerror=()=>{if(!tried){tried=1;im.src=wc[t]}};im.src=hi;
  }}
 function loadMap(c){const m=c.querySelector('.mp');if(m&&!m.firstChild){const f=document.createElement('iframe');f.loading='lazy';f.title='地圖';f.referrerPolicy='no-referrer-when-downgrade';f.src='https://www.google.com/maps?q='+m.dataset.q+'&output=embed&hl=zh-TW';m.appendChild(f)}}
 $('tl').addEventListener('pointerover',e=>{const c=e.target.closest('.st');if(c)loadMap(c)});

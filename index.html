@@ -5,59 +5,69 @@
 <link rel="manifest" href="data:application/json,%7B%22name%22%3A%22%E5%A4%A7%E9%98%AA%E5%85%AD%E5%A4%A9%E4%BA%94%E5%A4%9C%22%2C%22display%22%3A%22standalone%22%7D">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#23406B;--red:#D9482F;--yel:#F2B441;--pink:#E58FA6;--grn:#2F7D6B;--sky:#7FB9D6;--bg:#EEF4F3;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--navy:#23406B;--red:#D9482F;--yel:#F2B441;--pink:#E58FA6;--grn:#2F7D6B;--sky:#7FB9D6;--bg:#FFF9EE;color-scheme:light;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--navy);font:400 16px/1.65 "Noto Sans TC",system-ui,"PingFang TC","Microsoft JhengHei",sans-serif}
 main{max-width:640px;margin:0 auto;padding:16px 14px 48px}
 h1{font-size:26px;margin:14px 0 2px;line-height:1.3}h2{font-size:21px;margin:0 0 10px}h3{font-size:17px;margin:0}
-.card{background:#fff;border:1.5px solid var(--navy);border-radius:16px;padding:14px;margin:12px 0}
-.mu{color:#51627c;font-size:14px}.tag{display:inline-block;font-size:12px;line-height:1;padding:4px 8px;border-radius:999px;border:1.5px solid var(--navy);margin-left:6px;vertical-align:middle;background:#fff}
+.card{background:#fff;border:3px solid var(--navy);border-radius:22px;padding:14px;margin:12px 0}
+.mu{color:#51627c;font-size:14px}.tag{display:inline-block;font-size:12px;line-height:1;padding:4px 8px;border-radius:999px;border:3px solid var(--navy);margin-left:6px;vertical-align:middle;background:#fff}
 .demo{border-style:dashed;color:#51627c}.must{background:var(--red);color:#fff;border-color:var(--red)}
-button,.btn{font:inherit;color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:8px 16px;min-height:44px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s,background .15s}
+button,.btn{font:inherit;color:var(--navy);background:#fff;border:3px solid var(--navy);border-radius:999px;padding:8px 16px;min-height:44px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s,background .15s}
 button:active,.btn:active{transform:scale(.96)}button:focus-visible,.btn:focus-visible,input:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
 .btn.sm{min-height:40px;padding:6px 14px;font-size:14px}
-.nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
-.nav button{flex-direction:column;min-height:72px;border-radius:18px;font-weight:700;font-size:16px;gap:2px}.nav button span{font-size:24px;line-height:1}
-.nav button.on{background:var(--navy);color:#fff}
-.art{border:1.5px solid var(--navy);border-radius:16px;overflow:hidden;background:var(--sky)}.art svg{display:block;width:100%;height:auto}
+.nav{position:sticky;top:0;z-index:30;display:flex;gap:4px;overflow-x:auto;background:var(--bg);border-bottom:3px solid var(--navy);padding:8px 10px;padding-top:calc(8px + env(safe-area-inset-top,0px));scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{flex:1 0 auto;min-width:62px;min-height:64px;flex-direction:column;gap:2px;font-size:13px;font-weight:700;border:3px solid transparent;border-radius:18px;padding:6px 8px;background:transparent}.nav button span{font-size:22px;line-height:1}
+.nav button.on{background:var(--yel);border-color:var(--navy)}
+.art{border:3px solid var(--navy);border-radius:22px;overflow:hidden;background:var(--sky)}.art svg{display:block;width:100%;height:auto}
 .cd{text-align:center;padding:16px}.cd b{font-size:40px;color:var(--red);line-height:1.1;display:block}
 .bp{padding:0;overflow:hidden}.bph{background:var(--navy);color:#fff;padding:8px 14px;display:flex;justify-content:space-between;font-size:14px}
 .bpb{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;padding:14px;text-align:center}.bpb b{font-size:30px;display:block;line-height:1.1}
 .bpb .mid{font-size:13px;color:#51627c}.bpf{border-top:2px dashed var(--navy);padding:10px 14px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;font-size:14px}.bpf b{display:block;font-size:16px}
 .days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}.days::-webkit-scrollbar{display:none}
-.days button{flex:0 0 auto;flex-direction:column;min-width:82px;line-height:1.3;border-radius:16px;padding:8px 10px}.days button small{font-size:13px}.days button.on{background:var(--navy);color:#fff}.days button.today{border-color:var(--red);border-width:3px}
-.sum{position:sticky;top:0;z-index:5;background:#fff;border:1.5px solid var(--navy);border-radius:16px;margin:8px 0;padding:6px 12px}
+.days button{flex:0 0 auto;flex-direction:column;min-width:82px;line-height:1.3;border-radius:22px;padding:8px 10px}.days button small{font-size:13px}.days button.on{background:var(--navy);color:#fff}.days button.today{border-color:var(--red);border-width:3px}
+.sum{position:sticky;top:84px;z-index:5;background:#fff;border:3px solid var(--navy);border-radius:22px;margin:8px 0;padding:6px 12px}
 .sum summary{cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px;list-style:none}.sum summary::-webkit-details-marker{display:none}
 .sum .x{margin-left:auto;font-size:13px;color:#51627c}.sum .in{padding:4px 0 10px;border-top:1px solid #d6e0e6}
 .tgl{display:flex;gap:8px;margin:8px 0}.tgl button{flex:1}.tgl button.on{background:var(--yel);font-weight:700}
 .leg{margin:2px 0 2px 18px;padding:4px 0 4px 14px;border-left:3px dotted var(--navy);font-size:14px;color:#51627c}
-.st{border:1.5px solid var(--navy);border-radius:16px;margin:8px 0;overflow:hidden;cursor:pointer;animation:pop .45s cubic-bezier(.3,1.5,.5,1) both;transition:box-shadow .3s}
-.ph{position:relative;background:#fff;height:110px;overflow:hidden;border-bottom:1.5px solid var(--navy);transition:height .5s cubic-bezier(.3,1.25,.5,1)}
+.st{border:3px solid var(--navy);border-radius:22px;margin:8px 0;overflow:hidden;cursor:pointer;animation:pop .45s cubic-bezier(.3,1.5,.5,1) both;transition:box-shadow .3s}
+.ph{position:relative;background:#fff;height:110px;overflow:hidden;border-bottom:3px solid var(--navy);transition:height .5s cubic-bezier(.3,1.25,.5,1)}
 .ph svg,.ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .5s ease}
 .ov{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.ov .tag{margin:0}
-.ov .tm{background:#fff;border:1.5px solid var(--navy);border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
+.ov .tm{background:#fff;border:3px solid var(--navy);border-radius:999px;padding:3px 10px;font-size:14px;font-weight:700}
 .bd{padding:8px 12px 12px}.hd{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .more{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .3s}.more p{margin:6px 0 10px}
 .st.open .ph{height:190px}.st.open .ph svg,.st.open .ph img{transform:scale(1.15);opacity:.5}.st.open .more{max-height:460px;opacity:1}
-.mp iframe{display:block;width:100%;height:190px;border:1.5px solid var(--navy);border-radius:12px;margin-top:10px}.cr{position:absolute;right:8px;bottom:8px;font-size:11px;line-height:1.4;background:#fff;border:1px solid var(--navy);border-radius:999px;padding:1px 8px}
+.mp iframe{display:block;width:100%;height:190px;border:3px solid var(--navy);border-radius:12px;margin-top:10px}.cr{position:absolute;right:8px;bottom:8px;font-size:11px;line-height:1.4;background:#fff;border:1px solid var(--navy);border-radius:999px;padding:1px 8px}
 .st:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
 @media(hover:hover){.st:hover{box-shadow:0 6px 0 -1px rgba(35,64,107,.2)}.st:hover .ph{height:190px}.st:hover .ph svg,.st:hover .ph img{transform:scale(1.15);opacity:.5}.st:hover .more{max-height:460px;opacity:1}}
 .st.sight{background:#DCEEF6}.st.food{background:#FCEBC5}.st.shop{background:#F8DCE3}.st.other{background:#F1F3F2}
 .st.done{opacity:.55}.st.done h3{text-decoration:line-through}.st.skip h3{text-decoration:line-through;color:#7a879b}.st.skip{opacity:.5}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .chk{display:flex;align-items:center;gap:6px;font-size:15px;cursor:pointer;min-height:44px}.chk input{width:22px;height:22px;accent-color:var(--grn)}
-.rn{background:#E3F0F7;border:1.5px dashed var(--navy);border-radius:16px;padding:12px;margin:8px 0}
+.rn{background:#E3F0F7;border:3px dashed var(--navy);border-radius:22px;padding:12px;margin:8px 0}
 .back{width:100%;margin-top:18px;background:var(--navy);color:#fff}
-.pb{height:14px;border:1.5px solid var(--navy);border-radius:999px;background:#fff;overflow:hidden}.pb i{display:block;height:100%;background:var(--grn);transition:width .3s}
+.pb{height:14px;border:3px solid var(--navy);border-radius:999px;background:#fff;overflow:hidden}.pb i{display:block;height:100%;background:var(--grn);transition:width .3s}
 .li{display:flex;align-items:center;gap:8px;border-bottom:1px solid #d6e0e6;min-height:48px}.li label{flex:1;display:flex;gap:10px;align-items:center;cursor:pointer}.li input[type=checkbox]{width:22px;height:22px;accent-color:var(--grn)}.li.d span{text-decoration:line-through;color:#7a879b}
-.add{display:flex;gap:8px;margin-top:10px}.add input,.fld{flex:1;font:inherit;min-height:44px;border:1.5px solid var(--navy);border-radius:12px;padding:6px 12px;color:var(--navy);width:100%}
+.add{display:flex;gap:8px;margin-top:10px}.add input,.fld{flex:1;font:inherit;min-height:44px;border:3px solid var(--navy);border-radius:12px;padding:6px 12px;color:var(--navy);width:100%}
 .sec{display:none}.sec.on{display:block}
 @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
 @keyframes sw{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}@keyframes st{0%{opacity:0;transform:translateY(6px)}50%{opacity:.8}100%{opacity:0;transform:translateY(-14px)}}@keyframes rp{0%,100%{transform:translateX(-6px)}50%{transform:translateX(6px)}}
 .lan{transform-origin:50% 0;animation:sw 3.4s ease-in-out infinite}.stm{animation:st 3s ease-in infinite}.rip{animation:rp 4s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.pg{display:flex;justify-content:space-between;align-items:baseline;margin:4px 0 12px}.pg h2{font-size:32px;margin:0}
+.cdb{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.cdb div{border:3px solid var(--navy);border-radius:18px;background:#fff;padding:6px 0}.cdb div:first-child{background:var(--yel)}.cdb b{font-size:30px;line-height:1.2;color:var(--navy)}.cdb small{display:block;font-size:13px}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 0 6px;scrollbar-width:none}.chip{flex:0 0 auto}.chip.on{background:var(--yel);font-weight:700}
+.sc{border:3px solid var(--navy);border-radius:22px;overflow:hidden;margin:12px 0;background:#fff}.sc.sight{background:#DCEEF6}.sc.food{background:#FCEBC5}.sc.shop{background:#F8DCE3}.sc .ph{height:150px}.sc .bd{padding:10px 14px 14px}
+.tag,.ov .tm,.cr{border-width:2px}select.fld{background:#fff}
 </style></head>
-<body><main>
+<body><nav class="nav" id="nav"></nav><main>
+<div class="pg"><h2 id="pgT">首頁</h2><span class="mu">日本時間 <b id="clk" style="font-size:22px;color:var(--navy)"></b></span></div>
+
+
+<section class="sec" id="s0">
 <div class="art" aria-hidden="true"><svg viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg">
 <rect width="400" height="210" fill="#7FB9D6"/><rect y="150" width="400" height="60" fill="#23406B"/>
 <g class="rip" stroke="#7FB9D6" stroke-width="2" fill="none"><path d="M20 172h50M120 186h60M250 174h70M330 192h50"/></g>
@@ -70,26 +80,24 @@ button:active,.btn:active{transform:scale(.96)}button:focus-visible,.btn:focus-v
 <g fill="#fff" opacity=".9"><ellipse cx="90" cy="30" rx="26" ry="9"/><ellipse cx="300" cy="40" rx="30" ry="10"/></g></svg></div>
 <h1>大阪六天五夜</h1>
 <p class="mu" style="margin:0">2027/02/25（四）– 03/02（二）｜含伊根・天橋立・城崎溫泉</p>
-<nav class="nav" id="nav"></nav>
 
-<section class="sec" id="s0">
 <div class="card cd" id="cd"></div>
 <h2>航班</h2><div id="fl"></div>
 <p class="mu">標示「示範」的資料是暫放值，請改檔案上方 <code>TRIP</code> 設定區。時間皆為當地時間（日本比台灣快 1 小時）。</p>
-<button class="back" data-go="nav">回到主選單</button></section>
+<button class="back" data-go="nav">回到頂端</button></section>
 
 <section class="sec" id="s1">
 <div class="days" id="days"></div>
 <details class="sum" id="sum"></details>
 <div class="tgl"><button id="bs">☀️ 晴天行程</button><button id="br">☔ 雨天方案</button></div>
 <div id="rn"></div><div id="tl"></div>
-<button class="back" data-go="nav">回到主選單</button></section>
+<button class="back" data-go="nav">回到頂端</button></section>
 
 <section class="sec" id="s2">
 <div class="card"><h2>準備進度</h2><div class="pb"><i id="pbi" style="width:0"></i></div><p class="mu" id="pbt" style="margin:6px 0 0"></p></div>
 <div class="card"><h2>行前待辦</h2><div id="l0"></div><div class="add"><input id="i0" placeholder="新增待辦項目" aria-label="新增待辦"><button data-add="0">新增</button></div></div>
 <div class="card"><h2>行李準備</h2><div id="l1"></div><div class="add"><input id="i1" placeholder="新增行李項目" aria-label="新增行李"><button data-add="1">新增</button></div></div>
-<button class="back" data-go="nav">回到主選單</button></section>
+<button class="back" data-go="nav">回到頂端</button></section>
 
 <section class="sec" id="s3"><div id="hs"></div>
 <div class="card"><h2>緊急聯絡</h2><p style="margin:0"><a class="btn" href="tel:110">警察 110</a> <a class="btn" href="tel:119">消防・救護 119</a></p></div>
@@ -101,7 +109,12 @@ button:active,.btn:active{transform:scale(.96)}button:focus-visible,.btn:focus-v
 <p style="margin:0 0 6px"><b>梅田・大丸 B1</b>：常溫和洋菓子、茶葉、巧克力禮盒，最後一天補買</p>
 <p style="margin:0 0 6px"><b>宮津・城崎</b>：橄欖鹽、油漬沙丁魚罐頭、蟹仙貝</p>
 <p class="mu" style="margin:0">退稅：日本免稅制度預計 2026 年 11 月起改版，辦法出發前請查官方最新公告。肉製品不可帶入台灣。</p></div>
-<button class="back" data-go="nav">回到主選單</button></section>
+<button class="back" data-go="nav">回到頂端</button></section>
+<section class="sec" id="s4"><div class="chips" id="chips"></div><div id="sp"></div><button class="back" data-go="nav">回到頂端</button></section>
+<section class="sec" id="s5">
+<div class="card"><h2>匯率換算</h2><label class="mu">1 日圓 ＝ 幾元新台幣<span class="tag demo">示範</span></label><input class="fld" id="rate" type="number" step="0.001" inputmode="decimal"><br><br><label class="mu">日圓金額</label><input class="fld" id="cv" type="number" inputmode="decimal" placeholder="例：3000"><p style="font-size:24px;font-weight:700;margin:10px 0 0" id="cvo">NT$ 0</p></div>
+<div class="card"><h2>花費紀錄</h2><div class="add" style="flex-wrap:wrap"><select class="fld" id="exd" style="flex:1 1 100%"></select><input class="fld" id="exn" placeholder="項目" style="flex:2 1 120px"><input class="fld" id="exa" type="number" inputmode="decimal" placeholder="日圓" style="flex:1 1 90px"><button id="exb">新增</button></div><div id="exl"></div><p id="ext" style="font-weight:700"></p></div>
+<button class="back" data-go="nav">回到頂端</button></section>
 </main>
 <script>
 /* ===== TRIP 設定區：改資料只需改這裡（demo:true 為示範資料）===== */
@@ -168,12 +181,12 @@ const ld=(k,d)=>{try{const v=localStorage.getItem('oz_'+k);return v?JSON.parse(v
 const P=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',dateStyle:'short',timeStyle:'short'}).format(new Date()).split(' ');
 const today=P[0],now=P[1],D=TRIP.days;
 let ti=D.findIndex(x=>x.d===today),cur=ti>=0?ti:0,tab=0,rainOn=false;
-const NAV=[['🏠','總覽'],['🗓️','每日行程'],['✅','行前清單'],['🏨','住宿速查']];
+const NAV=[['🏠','首頁','s0'],['🗓️','行程','s1'],['🍜','景點美食','s4'],['✅','清單','s2'],['🧰','工具','s5'],['ℹ️','資訊','s3']];
 $('nav').innerHTML=NAV.map((n,i)=>`<button data-t="${i}"><span>${n[0]}</span>${n[1]}</button>`).join('');
-function show(i){tab=i;document.querySelectorAll('.nav button').forEach((b,j)=>b.classList.toggle('on',j===i));for(let j=0;j<4;j++)$('s'+j).classList.toggle('on',j===i)}
+function show(i){tab=i;document.querySelectorAll('.nav button').forEach((b,j)=>b.classList.toggle('on',j===i));NAV.forEach((n,j)=>$(n[2]).classList.toggle('on',j===i));$('pgT').textContent=NAV[i][1];scrollTo({top:0})}
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-t]');if(t)show(+t.dataset.t);
- const g=e.target.closest('[data-go]');if(g)$('nav').scrollIntoView({behavior:'smooth'});
+ const g=e.target.closest('[data-go]');if(g)scrollTo({top:0,behavior:'smooth'});
  const d=e.target.closest('[data-d]');if(d){cur=+d.dataset.d;rainOn=false;renderDay()}
  const a=e.target.closest('[data-add]');if(a)addItem(+a.dataset.add);
  const r=e.target.closest('[data-rm]');if(r){const[k,i]=r.dataset.rm.split(',');L[k].splice(+i,1);sv('list',L);renderList()}
@@ -181,7 +194,7 @@ document.addEventListener('click',e=>{
 /* 總覽 */
 function renderCd(){
  let h;
- if(today<D[0].d){const n=Math.ceil((new Date(D[0].d)-new Date(today))/864e5);h=`<span class="mu">距離出發還有</span><b>${n} 天</b>`}
+ if(new Date()<T0){h=`<div class="cdb" id="cdb">${['天','時','分','秒'].map(l=>`<div><b>00</b><small>${l}</small></div>`).join('')}</div><p class="mu" style="margin:10px 0 0">距離去程起飛（2/25 06:40，示範）</p>`}
  else if(ti>=0){const x=D[ti];const nx=x.s.find(s=>s[0]>now);h=`<span class="mu">旅行第 ${ti+1} 天・${x.t}</span><b>${nx?'下一站 '+nx[0]:'今日行程已完成'}</b>${nx?'<span>'+nx[2]+'</span>':''}`}
  else h='<b>旅程結束</b><span class="mu">歡迎回家</span>';
  $('cd').innerHTML=h}
@@ -247,8 +260,8 @@ const wk=s=>{if(s[7])return'';const r=WK.find(a=>a[0].test(s[2]));return r?r[1]:
 const wc=ld('wkc2',{});
 async function pic1(t){for(const n of t.split('|')){try{const r=await fetch('https://ja.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(n));if(!r.ok)continue;const j=await r.json();const u=j.thumbnail&&j.thumbnail.source;if(u)return u}catch(e){}}return''}
 async function photos(){
- for(const ph of document.querySelectorAll('#tl .ph[data-wk]')){
-  const t=ph.dataset.wk;if(!t)continue;
+ for(const ph of document.querySelectorAll('.ph[data-wk]')){
+  const t=ph.dataset.wk;if(!t||ph.dataset.d)continue;ph.dataset.d=1;
   if(!(t in wc)){wc[t]=await pic1(t);sv('wkc2',wc)}
   if(!wc[t])continue;
   const im=new Image();im.alt='示意照片';im.referrerPolicy='no-referrer';
@@ -259,5 +272,24 @@ function loadMap(c){const m=c.querySelector('.mp');if(m&&!m.firstChild){const f=
 $('tl').addEventListener('pointerover',e=>{const c=e.target.closest('.st');if(c)loadMap(c)});
 $('tl').addEventListener('click',e=>{const c=e.target.closest('.st');if(c)loadMap(c)});
 $('tl').addEventListener('focusin',e=>{const c=e.target.closest('.st');if(c)loadMap(c)});
-renderCd();renderDay();renderList();show(0);
+const T0=new Date('2027-02-25T06:40:00+08:00'),PRE=19529;
+function tick(){$('clk').textContent=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',timeStyle:'short'}).format(new Date());
+ const b=$('cdb'),d=T0-new Date();if(!b||d<=0)return;
+ [Math.floor(d/864e5),Math.floor(d/36e5)%24,Math.floor(d/6e4)%60,Math.floor(d/1e3)%60].forEach((v,i)=>b.children[i].firstChild.textContent=String(v).padStart(2,'0'))}
+let sf='all';
+function renderSpots(){
+ $('chips').innerHTML=[['all','全部'],['sight','景點'],['food','美食'],['shop','購物']].map(c=>`<button class="chip${sf===c[0]?' on':''}" data-f="${c[0]}">${c[1]}</button>`).join('');
+ let h='';D.forEach((x,di)=>x.s.forEach(s=>{if(s[1]==='other'||(sf!=='all'&&s[1]!==sf))return;
+  h+=`<article class="sc ${s[1]}"><div class="ph" data-wk="${wk(s)}">${art(s)}<div class="ov"><span class="tm">DAY ${di+1}</span>${s[5].includes('m')?'<span class="tag must">必去</span>':''}</div></div><div class="bd"><h3>${s[2]}</h3><p class="mu" style="margin:4px 0 8px">${s[3]}</p><a class="btn sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${enc(s[4])}">📍 地圖</a></div></article>`}));
+ $('sp').innerHTML=h;photos()}
+let rate=ld('rate',0.21),EX=ld('exp',[]);
+function convert(){$('cvo').textContent='NT$ '+Math.round((parseFloat($('cv').value)||0)*rate).toLocaleString()}
+function renderExp(){const t=EX.reduce((a,e)=>a+e.a,0),n=Math.round(t*rate);
+ $('exl').innerHTML=EX.map((e,i)=>`<div class="li"><span style="flex:1">DAY ${e.d+1}　${e.n}</span><b>¥${e.a.toLocaleString()}</b><button class="btn sm" data-ex="${i}" aria-label="移除">✕</button></div>`).join('');
+ $('ext').innerHTML=`當地花費 ¥${t.toLocaleString()} ≈ NT$ ${n.toLocaleString()}<br>已預付（住宿＋回程機票）NT$ ${PRE.toLocaleString()}<br>旅程總支出約 NT$ ${(n+PRE).toLocaleString()}`;convert()}
+$('rate').value=rate;$('exd').innerHTML=D.map((x,i)=>`<option value="${i}">DAY ${i+1}　${x.d.slice(5).replace('-','/')}</option>`).join('');$('exd').value=cur;
+$('rate').oninput=e=>{rate=parseFloat(e.target.value)||0;sv('rate',rate);renderExp()};$('cv').oninput=convert;
+$('exb').onclick=()=>{const n=$('exn').value.trim(),a=parseFloat($('exa').value);if(!n||!(a>0))return;EX.push({d:+$('exd').value,n,a});sv('exp',EX);$('exn').value='';$('exa').value='';renderExp()};
+document.addEventListener('click',e=>{const x=e.target.closest('[data-ex]');if(x){EX.splice(+x.dataset.ex,1);sv('exp',EX);renderExp()}const f=e.target.closest('[data-f]');if(f){sf=f.dataset.f;renderSpots()}});
+renderCd();renderDay();renderList();renderSpots();renderExp();show(0);tick();setInterval(tick,1000);
 </script></body></html>
